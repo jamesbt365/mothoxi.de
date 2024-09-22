@@ -1,0 +1,61 @@
+---
+import Base from "@layouts/Base.astro";
+import Card from "@components/Card.astro";
+import Icons, { type Socials } from "@components/Icons.astro";
+import styles from "@styles/index.module.css";
+
+interface Social {
+    username: string;
+    link: string;
+}
+
+const socials: Record<Socials, Social> = {
+    Email: {
+        username: "moxy@mothoxi.de",
+        link: "mailto:Moxy<moxy@mothoi.de>",
+    },
+    GitHub: {
+        username: "jamesbt365",
+        link: "https://github.com/jamesbt365",
+    },
+    Reddit: {
+        username: "jamesbt365",
+        link: "https://reddit.com/u/jamesbt365",
+    },
+    "Last.fm": {
+        username: "jamesbt365",
+        link: "https://www.last.fm/user/jamesbt365",
+    },
+    Spotify: {
+        username: "jamesbt365",
+        link: "https://open.spotify.com/user/yogajwzcv0ibgwkilnftft6ki",
+    },
+};
+---
+
+<Base title="Moxy">
+    <h1>Hello!</h1>
+    <p>
+        I'm jamesbt365! Also now known as Moxy, I like writing code in my spare
+        time.
+    </p>
+    <h2>Socials</h2>
+    <Card />
+    <div class={styles.socialsGrid}>
+        {
+            (Object.entries(socials) as [Socials, Social][]).map(
+                ([name, data]) => (
+                    <>
+                        <div class={styles.socialName}>
+                            <Icons name={name} />
+                            {name}
+                        </div>
+                        <a class={styles.socialUsername} href={data.link}>
+                            {data.username}
+                        </a>
+                    </>
+                ),
+            )
+        }
+    </div></Base
+>

@@ -1,0 +1,43 @@
+
+:root {
+    --primary: #13151a;
+    --accent: #F472B6;
+    --text-primary: #ffffff;
+
+    --socials-background: #7c1249;
+    --socials-border: #26263a;
+}
+
+html {
+    @apply scroll-smooth scroll-pt-24;
+}
+
+body {
+    @apply relative flex min-h-screen flex-col items-center scroll-smooth bg-primary px-24 text-text-primary supports-[min-height:100cqh]:min-h-[100cqh] supports-[min-height:100svh]:min-h-[100svh] max-[900px]:px-8;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @apply mb-6 mt-8 tracking-wider;
+}
+
+h1 {
+    @apply text-5xl;
+}
+
+h2 {
+    @apply text-4xl;
+}
+
+p {
+    @apply mb-4;
+}
+
+
+.navSpacer {
+    @apply h-12;
+}

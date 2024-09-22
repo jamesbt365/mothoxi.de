@@ -1,0 +1,22 @@
+---
+import BaseHead from "@components/BaseHead.astro";
+import { DESCRIPTION, TITLE } from "@constants";
+
+interface Props {
+    title?: string;
+    description?: string;
+}
+
+const { title = TITLE, description = DESCRIPTION } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead title={title} description={description} />
+    </head>
+    <body>
+        <div class="navSpacer"></div>
+        <slot />
+    </body>
+</html>

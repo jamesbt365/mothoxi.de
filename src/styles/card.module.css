@@ -1,5 +1,5 @@
 .discord {
-    @apply w-96 flex-col overflow-hidden rounded-lg border-socials-border bg-socials-background text-inherit;
+    @apply flex w-96 flex-col overflow-hidden rounded-lg border-socials-border bg-socials-background text-inherit;
 }
 
 .banner {

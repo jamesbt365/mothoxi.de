@@ -1,5 +1,6 @@
 ---
 import BaseHead from "@components/BaseHead.astro";
+import Header from "@components/Header.astro";
 import { DESCRIPTION, TITLE } from "@constants";
 
 interface Props {
@@ -16,6 +17,7 @@ const { title = TITLE, description = DESCRIPTION } = Astro.props;
         <BaseHead title={title} description={description} />
     </head>
     <body>
+        <Header />
         <div class="navSpacer"></div>
         <slot />
     </body>

@@ -1,18 +1,43 @@
 ---
 import GithubCard from "@components/GithubCard.astro";
 
-// Define an array of GitHub repository URLs
-const repoUrls = [
-    "https://github.com/Kons-5/Astro-Github-Cards",
-    "https://github.com/Kons-5/Astro-Github-Cards",
-    "https://github.com/Kons-5/Astro-Github-Cards",
-    "https://github.com/Kons-5/Astro-Github-Cards",
-    //(...)
+const API_KEY = import.meta.env.API_KEY;
+
+const repos = [
+    "https://api.github.com/repos/jamesbt365/mothoxi.de",
+    "https://api.github.com/repos/jamesbt365/PSSA",
+    "https://api.github.com/repos/jamesbt365/BSoD",
+    "https://api.github.com/repos/OpenTabletDriver/OpenTabletDriver",
 ];
+
+const Projects = await Promise.all(
+    repos.map(async (repo) => {
+        const requestInit = {
+            headers: new Headers({
+                Accept: "application/vnd.github.v3+json",
+                Authorization: `Bearer ${API_KEY}`,
+            }),
+        } satisfies RequestInit;
+        return fetch(repo, requestInit)
+            .then(async (r) => {
+                if (!r.ok) {
+                    const e = await r.text().catch(() => "Unknown Error");
+                    throw new Error(
+                        `Failed to fetch repo info for ${repo}: ${r.status} ${r.statusText}\n${e}`,
+                    );
+                }
+                return r.json();
+            })
+            .catch((e) => {
+                console.error(e);
+                return null;
+            });
+    }),
+);
 ---
 
-<div role="list" class="link-card-grid">
-    {repoUrls.map((url, index) => <GithubCard key={index} url={url} />)}
+<div>
+    {Projects.map((data) => (data ? <GithubCard {...data} /> : null))}
 </div>
 
 <style>
@@ -20,7 +45,7 @@ const repoUrls = [
         --cols: 3;
         display: grid;
         grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
-        gap: 0.75em;
+        gap: 0.45em;
     }
 
     @media screen and (max-width: 1400px) {

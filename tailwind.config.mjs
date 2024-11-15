@@ -9,6 +9,7 @@ export default {
                 "text-primary": "var(--text-primary)",
                 "socials-background": "var(--socials-background)",
                 "socials-border": "var(--socials-border)",
+                "header-bg": "var(--header-bg)",
             },
         },
     },

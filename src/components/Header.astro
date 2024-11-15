@@ -1,16 +1,15 @@
 ---
+import styles from "@styles/header.module.css";
+
 const navLinks = {
+    "/": "Home",
     "/projects": "Projects",
 };
 ---
 
-<nav>
-    <div>
-        <a href="/" aria-label="Home">
-            Home
-            <!-- <img src="/avatar.webp" alt="" width="40px" height="40px" /> -->
-        </a>
-        <div></div>
+<nav class={styles.header}>
+    <div class={styles.headerLinks}>
+        <div class={styles.headerLinksSeparator}></div>
         {
             Object.entries(navLinks).map(([path, name]) => (
                 <a href={path}>{name}</a>

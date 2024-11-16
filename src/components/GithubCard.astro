@@ -7,9 +7,6 @@ const avatarUrl = new URL(owner.avatar_url);
 avatarUrl.searchParams.set("size", "64");
 ---
 
-<script src="https://kit.fontawesome.com/3ededc33d4.js" crossorigin="anonymous"
-></script>
-
 <a href={html_url}>
     <div class="author">
         <img src={avatarUrl.toString()} />

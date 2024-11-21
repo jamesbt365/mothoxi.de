@@ -4,10 +4,13 @@ import GithubCard from "@components/GithubCard.astro";
 const API_KEY = import.meta.env.API_KEY;
 
 const repos = [
+    "https://api.github.com/repos/OpenTabletDriver/OpenTabletDriver",
+    "https://api.github.com/repos/serenity-rs/serenity",
+    "https://api.github.com/repos/serenity-rs/poise",
+    "https://api.github.com/repos/jamespy-rs/jamespy",
     "https://api.github.com/repos/jamesbt365/mothoxi.de",
     "https://api.github.com/repos/jamesbt365/PSSA",
     "https://api.github.com/repos/jamesbt365/BSoD",
-    "https://api.github.com/repos/OpenTabletDriver/OpenTabletDriver",
 ];
 
 const Projects = await Promise.all(
